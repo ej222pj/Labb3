@@ -1,4 +1,3 @@
-C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\obj\x86\Debug\Labb3.2.csprojResolveAssemblyReference.cache
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\bin\Windows\Debug\Content\particlesmoke.png
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\bin\Windows\Debug\Content\spark.png
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\bin\Windows\Debug\Labb3.2.exe

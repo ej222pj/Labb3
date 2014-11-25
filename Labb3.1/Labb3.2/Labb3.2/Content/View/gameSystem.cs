@@ -18,13 +18,12 @@ namespace Labb3._2.Content.View
         public GameSystem(Viewport viewPort, ContentManager content)
         {
             position = new Vector2(0.5f, 0.5f);
-            splitterSystem = new SplitterSystem(viewPort, position, content);
+            splitterSystem = new SplitterSystem(viewPort, content);
             
         }
 
         public void Draw(SpriteBatch spriteBatch, float timeElapsed)
         {
-            
             splitterSystem.Draw(spriteBatch, timeElapsed);
         }
     }

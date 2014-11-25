@@ -12,9 +12,11 @@ namespace Labb3._2.Content.Controller
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        SplitterSystem splitterSystem;
         Vector2 mousePos;
         GameSystem gameSystem;
+        bool didUserClickMouse = false;
+        private float runTime;
+        private MouseState oldState;
 
         public Game1()
             : base()
@@ -35,7 +37,7 @@ namespace Labb3._2.Content.Controller
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            splitterSystem = new SplitterSystem(GraphicsDevice.Viewport, mousePos, Content);
+            gameSystem = new GameSystem(GraphicsDevice.Viewport, Content);
             base.Initialize();
         }
 
@@ -70,14 +72,18 @@ namespace Labb3._2.Content.Controller
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            runTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // TODO: Add your update logic here
-            MouseState mouseState = Mouse.GetState();
+            MouseState newState = Mouse.GetState();
 
-            if (mouseState.LeftButton == ButtonState.Pressed)
+            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
             {
-                mousePos = new Vector2(mouseState.X, mouseState.Y);
+                mousePos = new Vector2(newState.X, newState.Y);
+                didUserClickMouse = true;
             }
+
+            oldState = newState;
 
             base.Update(gameTime);
         }
@@ -91,8 +97,10 @@ namespace Labb3._2.Content.Controller
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            gameSystem.Draw(spriteBatch, (float)gameTime.ElapsedGameTime.TotalSeconds);
-
+            if (didUserClickMouse) 
+            { 
+                gameSystem.Draw(spriteBatch, runTime);
+            }
             base.Draw(gameTime);
         }
     }

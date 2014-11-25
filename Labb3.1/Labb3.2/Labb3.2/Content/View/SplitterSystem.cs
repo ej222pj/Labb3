@@ -19,29 +19,16 @@ namespace Labb3._2.Content.View
         private Vector2 position;
         private Texture2D splitterTexture;
 
-        public SplitterSystem(Viewport viewPort, Vector2 Position, ContentManager content)
+        public SplitterSystem(Viewport viewPort, ContentManager content)
         {
             camera = new Camera(viewPort.Width, viewPort.Height);
 
             particles = new SplitterParticle[maxPartical];
-            position = Position;
+            //position = Position;
 
             splitterTexture = content.Load<Texture2D>("spark");
 
             newExplotion();
-        }
-        private void newSystem()
-        {
-            Random rand = new Random();
-
-            for (int i = 0; i < maxPartical; i++)
-            {
-                Vector2 direction = new Vector2(((float)rand.NextDouble() - 0.5f), ((float)rand.NextDouble() - 0.5f));
-                direction.Normalize();
-                direction = direction * ((float)rand.NextDouble() * maxSpeed);
-
-                particles[i] = new SplitterParticle(direction, position);
-            }
         }
 
         private void newExplotion()

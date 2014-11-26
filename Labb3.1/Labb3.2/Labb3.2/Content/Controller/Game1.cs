@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Labb3._2.Content.Controller
 {
@@ -12,18 +13,18 @@ namespace Labb3._2.Content.Controller
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Vector2 mousePos;
         GameSystem gameSystem;
-        bool didUserClickMouse = false;
+        private MouseStateView mouse;
+        Camera camera;
         private float runTime;
-        private MouseState oldState;
+        private List<GameSystem> particles;
 
         public Game1()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 300;
-            graphics.PreferredBackBufferHeight = 300;
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 600;
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
@@ -37,7 +38,6 @@ namespace Labb3._2.Content.Controller
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            gameSystem = new GameSystem(GraphicsDevice.Viewport, Content);
             base.Initialize();
         }
 
@@ -51,7 +51,11 @@ namespace Labb3._2.Content.Controller
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            gameSystem = new GameSystem(GraphicsDevice.Viewport, Content);
+            camera = new Camera(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            mouse = new MouseStateView(camera);
+            particles = new List<GameSystem>();
+            
+
         }
 
         /// <summary>
@@ -75,15 +79,18 @@ namespace Labb3._2.Content.Controller
             runTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // TODO: Add your update logic here
-            MouseState newState = Mouse.GetState();
 
-            if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
+            if (mouse.IsButtonPressed())
             {
-                mousePos = new Vector2(newState.X, newState.Y);
-                didUserClickMouse = true;
+                Vector2 mousePos = mouse.GetMousePos();
+
+                particles.Add(new GameSystem(Content, mousePos, camera));
             }
 
-            oldState = newState;
+            foreach (var particle in particles)
+            {
+                particle.Update(runTime);
+            }
 
             base.Update(gameTime);
         }
@@ -97,11 +104,12 @@ namespace Labb3._2.Content.Controller
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            if (didUserClickMouse) 
-            { 
-                gameSystem.Draw(spriteBatch, runTime);
-            }
+            foreach (var particle in particles)
+            {
+                particle.Draw(spriteBatch);
+            }                                
+           
             base.Draw(gameTime);
         }
-    }
+    }                                                                                            
 }

@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Content\View\GameSystem.cs" />
+    <Compile Include="Content\View\MouseStateView.cs" />
     <Compile Include="Content\View\SplitterParticle.cs" />
     <Compile Include="Content\View\SplitterSystem.cs" />
     <Compile Include="Content\View\Camera.cs" />

@@ -62,6 +62,16 @@ namespace Labb3._2.Content.View
             return new Vector2(X, Y);
         }
 
+        public Vector2 mousePosToModelPos(float mouseX, float mouseY)
+        {
+            float modelX = (mouseX - border) / scale;
+            float modelY = (mouseY - border) / scale;
+
+            Vector2 newPos = new Vector2(modelX, modelY);
+
+            return newPos;
+        }
+
         public float Scale
         {
             get { return scale; }

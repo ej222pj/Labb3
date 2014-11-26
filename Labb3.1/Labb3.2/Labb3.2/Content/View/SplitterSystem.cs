@@ -19,12 +19,12 @@ namespace Labb3._2.Content.View
         private Vector2 position;
         private Texture2D splitterTexture;
 
-        public SplitterSystem(Viewport viewPort, ContentManager content)
+        public SplitterSystem(Vector2 Position, ContentManager content, Camera Camera)
         {
-            camera = new Camera(viewPort.Width, viewPort.Height);
+            camera = Camera;
 
             particles = new SplitterParticle[maxPartical];
-            //position = Position;
+            position = Position;
 
             splitterTexture = content.Load<Texture2D>("spark");
 
@@ -45,20 +45,16 @@ namespace Labb3._2.Content.View
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, float timeElapsed)
+        public void Update(float timeElapsed)
         {
-            time += timeElapsed;
-
             for (int i = 0; i < maxPartical; i++)
             {
                 particles[i].Update(timeElapsed);
             }
-            if (time > runTime)
-            {
-                time = 0;
-                newExplotion();
-            }
+        }
 
+        public void Draw(SpriteBatch spriteBatch)
+        {
             for (int i = 0; i < maxPartical; i++)
             {
                 particles[i].Draw(spriteBatch, splitterTexture, camera);

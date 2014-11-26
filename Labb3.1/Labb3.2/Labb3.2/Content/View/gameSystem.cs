@@ -13,18 +13,21 @@ namespace Labb3._2.Content.View
     {
         private Vector2 position;
         private SplitterSystem splitterSystem;
-        Vector2 mousePos;
 
-        public GameSystem(Viewport viewPort, ContentManager content)
+        public GameSystem(ContentManager content, Vector2 Position, Camera camera )
         {
-            position = new Vector2(0.5f, 0.5f);
-            splitterSystem = new SplitterSystem(viewPort, content);
+            splitterSystem = new SplitterSystem(Position, content, camera);
             
         }
 
-        public void Draw(SpriteBatch spriteBatch, float timeElapsed)
+        public void Update(float timeElapsed) 
         {
-            splitterSystem.Draw(spriteBatch, timeElapsed);
+            splitterSystem.Update(timeElapsed);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            splitterSystem.Draw(spriteBatch);
         }
     }
 }

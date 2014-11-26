@@ -13,18 +13,17 @@ namespace Labb3._2.Content.Controller
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameSystem gameSystem;
         private MouseStateView mouse;
         Camera camera;
         private float runTime;
-        private List<GameSystem> particles;
+        private List<GameSystem> effects;
 
         public Game1()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 600;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 500;
+            graphics.PreferredBackBufferHeight = 500;
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
@@ -53,7 +52,7 @@ namespace Labb3._2.Content.Controller
             // TODO: use this.Content to load your game content here
             camera = new Camera(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             mouse = new MouseStateView(camera);
-            particles = new List<GameSystem>();
+            effects = new List<GameSystem>();
             
 
         }
@@ -84,10 +83,10 @@ namespace Labb3._2.Content.Controller
             {
                 Vector2 mousePos = mouse.GetMousePos();
 
-                particles.Add(new GameSystem(Content, mousePos, camera));
+                effects.Add(new GameSystem(Content, mousePos, camera));
             }
 
-            foreach (var particle in particles)
+            foreach (var particle in effects)
             {
                 particle.Update(runTime);
             }
@@ -101,10 +100,10 @@ namespace Labb3._2.Content.Controller
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
-            foreach (var particle in particles)
+            foreach (var particle in effects)
             {
                 particle.Draw(spriteBatch);
             }                                

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +11,17 @@ namespace Labb3._2.Content.View
     class SmokeSystem
     {        
         private Camera camera;
+        private Texture2D smokeTexture;
         private List<SmokeParticle> particles = new List<SmokeParticle>();
         private float totalTime = 0;
         private static float delay = 0.2f;
+        private Vector2 position;
 
-        public SmokeSystem(Viewport viewPort)
+        public SmokeSystem(Vector2 Position, ContentManager content, Camera Camera)
         {
-            camera = new Camera(viewPort.Width, viewPort.Height);
+            camera = Camera;
+            position = Position;
+            smokeTexture = content.Load<Texture2D>("particlesmoke");
         }
 
         public void Update(float timeElapsed)
@@ -26,7 +32,7 @@ namespace Labb3._2.Content.View
             {
                 totalTime = 0;
             
-            particles.Add(new SmokeParticle());
+            particles.Add(new SmokeParticle(position));
             }
 
             for (int i = 0; i < particles.Count; i++)
@@ -40,11 +46,11 @@ namespace Labb3._2.Content.View
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D splitterTexture)
+        public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < particles.Count; i++)
             {
-                particles[i].Draw(spriteBatch, splitterTexture, camera);
+                particles[i].Draw(spriteBatch, smokeTexture, camera);
             }
         }
     }

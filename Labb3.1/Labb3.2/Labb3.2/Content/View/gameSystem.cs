@@ -11,23 +11,25 @@ namespace Labb3._2.Content.View
 {
     class GameSystem
     {
-        private Vector2 position;
         private SplitterSystem splitterSystem;
+        private SmokeSystem smokeSystem;
 
-        public GameSystem(ContentManager content, Vector2 Position, Camera camera )
+        public GameSystem(ContentManager content, Vector2 Position, Camera camera)
         {
             splitterSystem = new SplitterSystem(Position, content, camera);
-            
+            smokeSystem = new SmokeSystem(Position, content, camera);
         }
 
         public void Update(float timeElapsed) 
         {
             splitterSystem.Update(timeElapsed);
+            smokeSystem.Update(timeElapsed);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             splitterSystem.Draw(spriteBatch);
+            smokeSystem.Draw(spriteBatch);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Labb3._2.Content.View
         private Vector2 position;
         private Vector2 velocity;
         private Vector2 acceleration;
-        private static float splitterSize = 0.04f;
+        private static float splitterSize = 0.03f;
 
 
         public SplitterParticle(Vector2 Velocity, Vector2 Position)

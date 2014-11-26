@@ -11,10 +11,8 @@ namespace Labb3._2.Content.View
     class SplitterSystem
     {
         private SplitterParticle[] particles;
-        private int maxPartical = 100;
-        private float time = 0;
-        private static float runTime = 3;
-        private static float maxSpeed = 0.4f;
+        private int maxPartical = 200;
+        private static float maxSpeed = 0.3f;
         private Camera camera;
         private Vector2 position;
         private Texture2D splitterTexture;

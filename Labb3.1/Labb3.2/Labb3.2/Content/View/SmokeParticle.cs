@@ -12,7 +12,7 @@ namespace Labb3._2.Content.View
         private Vector2 position;
         private Vector2 velocity;
         private Vector2 speed;
-        private static float maxSpeed = 0.2f;
+        private static float maxSpeed = 0.3f;
 
         private float timeLived = 0;
         private float size = 0;
@@ -21,17 +21,17 @@ namespace Labb3._2.Content.View
         private float minSize = 3f;
         private float maxSize = 6f;
         private float rotation = 0;
+        private static float smokeSize = 0.1f;
 
-        public SmokeParticle()
+        public SmokeParticle(Vector2 Position)
         {
-            speed = new Vector2(0, -0.3f);
+            position = Position;
+            speed = new Vector2(0, -0.6f);
             Respawn();
         }
 
         public void Respawn()
         {
-            position = new Vector2(0.5f, 1.0f);
-
             Random rand = new Random();
             velocity = new Vector2(((float)rand.NextDouble() - 0.5f), ((float)rand.NextDouble() - 0.5f));
             velocity.Normalize();
@@ -45,11 +45,10 @@ namespace Labb3._2.Content.View
 
         public void Update(float timeElapsed)
         {
-            rotation += 0.02f;
+            rotation += 0.015f;
 
             timeLived += timeElapsed;
             lifePercent = timeLived / maxTimeToLive;
-            size = minSize + lifePercent * maxSize;
 
             Vector2 newPos = new Vector2();
             Vector2 newVel = new Vector2();
@@ -82,7 +81,7 @@ namespace Labb3._2.Content.View
             Vector2 origin = new Vector2(smokeTexture.Bounds.Width / 2, smokeTexture.Bounds.Height / 2);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(smokeTexture, camera.scaleVector(position.X, position.Y), new Rectangle(0, 0, smokeTexture.Bounds.Width, smokeTexture.Bounds.Height), color, rotation, origin, size, SpriteEffects.None, 0);
+            spriteBatch.Draw(smokeTexture, camera.scaleParticle(position.X, position.Y, smokeSize), new Rectangle(0, 0, smokeTexture.Bounds.Width, smokeTexture.Bounds.Height), color, rotation, origin, SpriteEffects.None, 0);
             spriteBatch.End();
         }
     }

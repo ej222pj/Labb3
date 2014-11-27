@@ -35,7 +35,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Content\Controller\Game1.cs" />
+    <Compile Include="Content\Model\Ball.cs" />
+    <Compile Include="Content\Model\BallSimulation.cs" />
+    <Compile Include="Content\View\BallView.cs" />
+    <Compile Include="Content\View\Camera.cs" />
+    <Compile Include="Content\View\GameSystem.cs" />
+    <Compile Include="Content\View\MouseStateView.cs" />
+    <Compile Include="Content\View\SmokeParticle.cs" />
+    <Compile Include="Content\View\SmokeSystem.cs" />
+    <Compile Include="Content\View\SplitterParticle.cs" />
+    <Compile Include="Content\View\SplitterSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -47,10 +57,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Aim.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\DeadSpinningBeachBallOfDeath.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\particlesmoke.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\spark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SpinningBeachBallOfDeath.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
+    <None Include="Content\fire.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

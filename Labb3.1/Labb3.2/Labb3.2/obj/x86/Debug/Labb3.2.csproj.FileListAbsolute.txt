@@ -25,3 +25,4 @@ C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\bin\Windows\Debug\S
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\obj\x86\Debug\Labb3.2.exe
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\obj\x86\Debug\Labb3.2.pdb
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\obj\x86\Debug\Labb3.2.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.2\Labb3.2\bin\Windows\Debug\Content\fire.wav

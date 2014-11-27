@@ -1,5 +1,6 @@
 ﻿using Labb3._2.Content.View;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Labb3._2.Content.Controller
         Camera camera;
         private float runTime;
         private List<GameSystem> effects;
+        private SoundEffect fire;
 
         public Game1()
             : base()
@@ -53,6 +55,7 @@ namespace Labb3._2.Content.Controller
             camera = new Camera(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             mouse = new MouseStateView(camera);
             effects = new List<GameSystem>();
+            fire = Content.Load<SoundEffect>("fire");
             
 
         }
@@ -84,6 +87,7 @@ namespace Labb3._2.Content.Controller
                 Vector2 mousePos = mouse.GetMousePos();
 
                 effects.Add(new GameSystem(Content, mousePos, camera));
+                fire.Play();
             }
 
             foreach (var particle in effects)

@@ -31,7 +31,7 @@ namespace Labb3._3.Content.Model
         }
         public void didBallsIntersect(Vector2 mousePos)
         {
-            float mouseArea = 0.1f;
+            float mouseArea = 0.09f;
 
             foreach (var ball in ballList)
             {
@@ -43,8 +43,6 @@ namespace Labb3._3.Content.Model
                     ball.IsDead = true;
                 }
             }
-
-            //Rectangle mouseArea = new Rectangle(mousePos.X, mousePos.Y, 1, 1).Intersects(rectangle)
         }
 
        internal void update(float elapsedTime)

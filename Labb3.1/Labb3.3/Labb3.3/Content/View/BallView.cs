@@ -22,7 +22,6 @@ namespace Labb3._3.Content.View
             camera = Camera;
 
             spriteBatch = new SpriteBatch(graphicsDevice);
-            //circleTexture = content.Load<Texture2D>("SpinningBeachBallOfDeath");
             aliveBallTexture = content.Load<Texture2D>("SpinningBeachBallOfDeath");
             deadBallTexture = content.Load<Texture2D>("DeadSpinningBeachBallOfDeath");
         }
@@ -66,7 +65,7 @@ namespace Labb3._3.Content.View
             int vy = (int)(centerY * camera.Scale + camera.getFrame());
             int ballSize = (int)(diameter * camera.Scale);
 
-            Rectangle newBall = new Rectangle(vx - ballSize / 2, vy - ballSize / 2, ballSize / 2, ballSize / 2);
+            Rectangle newBall = new Rectangle(vx - ballSize / 2, vy - ballSize / 2, ballSize, ballSize);
 
             Texture2D ballTexture;
             ballTexture = aliveBallTexture;

@@ -19,7 +19,7 @@ namespace Labb3._3.Content.Model
             isDead = false;
             this.centerX = centerX;
             this.centerY = centerY;
-            diameter = 0.06f;
+            diameter = 0.03f;
             this.speedX = speedX;
             this.speedY = speedY;
         }

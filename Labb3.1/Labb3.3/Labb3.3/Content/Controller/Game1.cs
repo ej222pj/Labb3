@@ -60,6 +60,7 @@ namespace Labb3._3.Content.Controller
             // TODO: use this.Content to load your game content here
             pixel = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             pixel.SetData(new[] { Color.White });
+
             camera = new Camera(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, offSet);
             ballSimulation = new BallSimulation();
             ballView = new BallView(GraphicsDevice, Content, camera);
@@ -98,7 +99,7 @@ namespace Labb3._3.Content.Controller
 
                 effects.Add(new GameSystem(Content, mousePosition, camera));
                 fire.Play();
-                ballSimulation.didBallsIntersect(mousePosition);
+                ballSimulation.ballsInsideMouseArea(mousePosition);
             }
 
             foreach (var particle in effects)
@@ -127,7 +128,7 @@ namespace Labb3._3.Content.Controller
             }
 
             ballView.drawLevel(titleSafeRectangle, offSet, Color.Cyan, pixel, 1);
-            mouse.drawMouseAim(aimTexture);
+            mouse.drawMouseAim(aimTexture, ballSimulation.getMouseArea);
             foreach (var ball in ballSimulation.ballList) 
             {
                 ballView.drawBall(ball.CenterX, ball.CenterY, ball.Diameter, ball.IsDead);

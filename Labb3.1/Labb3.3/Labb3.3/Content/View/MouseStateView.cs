@@ -17,9 +17,9 @@ namespace Labb3._3.Content.View
         Camera camera;
         private SpriteBatch spriteBatch;
 
-        public MouseStateView(Camera camera, GraphicsDevice graphicsDevice)
+        public MouseStateView(Camera Camera, GraphicsDevice graphicsDevice)
         {
-            this.camera = camera;
+            camera = Camera;
             spriteBatch = new SpriteBatch(graphicsDevice);
         }
 
@@ -50,13 +50,13 @@ namespace Labb3._3.Content.View
             return mouseModelPos;
         }
 
-        internal void drawMouseAim(Texture2D aimTexture)
+        internal void drawMouseAim(Texture2D aimTexture, float mouseDiameter)
         {
             //int vx = (int)(centerX * camera.Scale + camera.getFrame());
             //int vy = (int)(centerY * camera.Scale + camera.getFrame());
-            //int ballSize = (int)(diameter * camera.Scale);
+            int mouseArea = (int)(mouseDiameter * camera.Scale);
 
-            Rectangle mouseAim = new Rectangle(currentMouseState.X - 100 / 2, currentMouseState.Y - 100 / 2, 100, 100);
+            Rectangle mouseAim = new Rectangle(currentMouseState.X - mouseArea / 2, currentMouseState.Y - mouseArea / 2, mouseArea, mouseArea);
 
             spriteBatch.Begin();
             spriteBatch.Draw(aimTexture, mouseAim, Color.White);

@@ -10,7 +10,7 @@ namespace Labb3._3.Content.Model
     {
         public List<Ball> ballList;
         private int numberOfBalls = 10;
-        float mouseArea = 0.1f;
+        float mouseArea = 0.3f;
 
         public BallSimulation()
         {

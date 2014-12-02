@@ -29,3 +29,4 @@ C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.3\Labb3.3\bin\Windows\Debug\C
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.3\Labb3.3\bin\Windows\Debug\Content\SpinningBeachBallOfDeath.png
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.3\Labb3.3\bin\Windows\Debug\Content\Aim.png
 C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.3\Labb3.3\bin\Windows\Debug\Content\fire.xnb
+C:\Users\Eric\Documents\GitHub\Labb3\Labb3.1\Labb3.3\Labb3.3\bin\Windows\Debug\Content\firee.xnb

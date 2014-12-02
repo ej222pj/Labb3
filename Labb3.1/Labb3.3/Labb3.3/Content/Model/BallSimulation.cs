@@ -10,7 +10,7 @@ namespace Labb3._3.Content.Model
     {
         public List<Ball> ballList;
         private int numberOfBalls = 10;
-        float mouseArea = 0.3f;
+        float mouseDiameter = 0.1f;
 
         public BallSimulation()
         {
@@ -33,13 +33,14 @@ namespace Labb3._3.Content.Model
         public void ballsInsideMouseArea(Vector2 mousePos)
         {
             foreach (var ball in ballList)
-            {
-                if (ball.CenterX + ball.Diameter / 2 > mousePos.X - mouseArea /2 &&
-                    ball.CenterX - ball.Diameter / 2 < mousePos.X + mouseArea /2 &&
-                    ball.CenterY + ball.Diameter / 2 > mousePos.Y - mouseArea /2 &&
-                    ball.CenterY - ball.Diameter / 2 < mousePos.Y + mouseArea /2)
-                {
-                    ball.IsDead = true;
+            {   //Räknar ut en linje till partiklarna
+                float dx = ball.CenterX - mousePos.X;
+                float dy = ball.CenterY - mousePos.Y;
+                float length = (float)Math.Sqrt(dx * dx + dy * dy);
+
+                if (length < mouseDiameter / 2) 
+                { 
+                    ball.IsDead = true; 
                 }
             }
         }
@@ -75,9 +76,9 @@ namespace Labb3._3.Content.Model
            }
        }
 
-       public float getMouseArea
+       public float getMouseDiameter
        {
-           get { return mouseArea; }
+           get { return mouseDiameter; }
        }
     }
 }

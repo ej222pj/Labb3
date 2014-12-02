@@ -66,9 +66,8 @@ namespace Labb3._3.Content.Controller
             ballView = new BallView(GraphicsDevice, Content, camera);
             mouse = new MouseStateView(camera, GraphicsDevice);
             effects = new List<GameSystem>();
-            fire = Content.Load<SoundEffect>("fire");
+            fire = Content.Load<SoundEffect>("firee");
             aimTexture = Content.Load<Texture2D>("Aim");
-
         }
 
         /// <summary>
@@ -128,7 +127,7 @@ namespace Labb3._3.Content.Controller
             }
 
             ballView.drawLevel(titleSafeRectangle, offSet, Color.Cyan, pixel, 1);
-            mouse.drawMouseAim(aimTexture, ballSimulation.getMouseArea);
+            mouse.drawMouseAim(aimTexture, ballSimulation.getMouseDiameter);
             foreach (var ball in ballSimulation.ballList) 
             {
                 ballView.drawBall(ball.CenterX, ball.CenterY, ball.Diameter, ball.IsDead);

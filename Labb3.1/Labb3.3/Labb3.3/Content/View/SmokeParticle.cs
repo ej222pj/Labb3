@@ -23,7 +23,7 @@ namespace Labb3._3.Content.View
         public SmokeParticle(Vector2 Position)
         {
             position = Position;
-            speed = new Vector2(0, -0.6f);
+            speed = new Vector2(0, -1.0f);
             Respawn();
         }
 

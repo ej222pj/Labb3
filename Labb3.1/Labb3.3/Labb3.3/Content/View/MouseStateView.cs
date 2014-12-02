@@ -29,7 +29,7 @@ namespace Labb3._3.Content.View
             currentMouseState = Mouse.GetState();
 
             if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
-            {
+            {     
                 mouseIsClicked = true;
             }
 
@@ -50,13 +50,11 @@ namespace Labb3._3.Content.View
             return mouseModelPos;
         }
 
-        internal void drawMouseAim(Texture2D aimTexture, float mouseDiameter)
+        internal void drawMouseAim(Texture2D aimTexture, float MouseDiameter)
         {
-            //int vx = (int)(centerX * camera.Scale + camera.getFrame());
-            //int vy = (int)(centerY * camera.Scale + camera.getFrame());
-            int mouseArea = (int)(mouseDiameter * camera.Scale);
+            int mouseDiameter = (int)(MouseDiameter * camera.Scale);
 
-            Rectangle mouseAim = new Rectangle(currentMouseState.X - mouseArea / 2, currentMouseState.Y - mouseArea / 2, mouseArea, mouseArea);
+            Rectangle mouseAim = new Rectangle(currentMouseState.X - mouseDiameter / 2, currentMouseState.Y - mouseDiameter / 2, mouseDiameter, mouseDiameter);
 
             spriteBatch.Begin();
             spriteBatch.Draw(aimTexture, mouseAim, Color.White);
